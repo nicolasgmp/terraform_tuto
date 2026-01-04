@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   terraform:
-    uses: ./terraform.yml
+    uses: ./.github/workflows/terraform.yml
     with:
       environment: dev
       aws-assume-role-arn: "arn:aws:iam::394139051461:role/github-actions-nicolasgmp-pipeline"
