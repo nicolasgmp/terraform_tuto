@@ -1,0 +1,20 @@
+name: "DEV DEPLOY"
+
+on:
+  push:
+    branches:
+      - develop
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  terraform:
+    uses: ./terraform.yml
+    with:
+      environment: dev
+      aws-assume-role-arn: "arn:aws:iam::394139051461:role/github-actions-nicolasgmp-pipeline"
+      aws-statefile-s3-bucket: "nicolasgmp-us-east-2-terraform-statefile"
+      aws-region: "us-east-2"
+      aws-lock-dynamodb-table: "nicolasgmp-us-east-2-terraform-lock"
